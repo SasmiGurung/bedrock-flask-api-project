@@ -1,20 +1,17 @@
 #init a base image ()
-FROM python
+FROM python:3.10
 
 EXPOSE 5000
 
 
 #define present working directory
-WORKDIR /demo-deployment
+WORKDIR /aws-text-summarizer
 
 #copy the contain to the working dir
-ADD . /demo-deployment
+ADD . /aws-text-summarizer
 
 #run pip to install the dependencies of the flask app
 RUN pip install -r requirements.txt
 
 #define the command to start the container
-CMD ["flask", "run", "--host", "0.0.0.0"]
-
-
-
+CMD ["python", "app.py"]
